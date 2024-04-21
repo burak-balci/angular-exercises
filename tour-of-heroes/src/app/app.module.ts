@@ -11,10 +11,10 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HeroesComponent,
   ],
   declarations: [
     AppComponent,
-    HeroesComponent,
     ],
   bootstrap: [ AppComponent ]
 })
