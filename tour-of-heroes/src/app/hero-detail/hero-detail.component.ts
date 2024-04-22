@@ -1,7 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {Hero} from '../hero'
 import {FormsModule} from "@angular/forms";
-import {NgIf, UpperCasePipe} from "@angular/common";
+import {NgIf, UpperCasePipe, Location} from "@angular/common";
+import {ActivatedRoute} from "@angular/router";
+import {HeroService} from "../hero.service";
 
 @Component({
   standalone: true,
@@ -11,5 +13,17 @@ import {NgIf, UpperCasePipe} from "@angular/common";
   imports: [FormsModule, NgIf, UpperCasePipe]
 })
 export class HeroDetailComponent {
-  @Input() hero?: Hero
+  hero: Hero | undefined
+
+  ngOnInit() {
+    this.getHero();
+  }
+
+  constructor(private route: ActivatedRoute, private heroService: HeroService, private location: Location) {
+  }
+
+  getHero() {
+    const id = Number(this.route.snapshot.paramMap.get('id'))
+    this.heroService.getHero(id).subscribe(hero => this.hero = hero)
+  }
 }
