@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {HeroFormComponent} from "./hero-form/hero-form.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
+  imports: [
+    HeroFormComponent
+  ],
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'template-driven-form';
-}
+export class AppComponent {}
